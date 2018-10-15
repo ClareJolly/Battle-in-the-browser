@@ -1,10 +1,9 @@
-#Battle in the browser
+# Battle in the browser
 
 In this challenge, you will set up a basic project structure with Sinatra, RSpec, and Capybara ready to go.
 
-![Image of Finished game]
-(https://www.dropbox.com/s/zsek8tdt8i344x2/battle_final_mockup.png)
-
+<!-- ![Image of Finished game]
+(https://dl.dropboxusercontent.com/s/zsek8tdt8i344x2/battle_final_mockup.png) -->
 
 ## Challenge setup
 Here are the complete User Stories for this project. They begin with some 'Basic' User Stories:

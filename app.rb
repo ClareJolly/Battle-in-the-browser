@@ -4,15 +4,13 @@ require './lib/player'
 
 class Battle < Sinatra::Base
 
- enable :sessions
+  enable :sessions
 
   get '/' do
     erb :index
   end
 
   post '/names' do
-    # $player_1 = Player.new(params[:player_1_name])
-    # $player_2 = Player.new(params[:player_2_name])
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
     $game = Game.new(player_1, player_2)
@@ -20,28 +18,23 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    # @player_1_name = $player_1.name
-    # @player_2_name = $player_2.name
-    # @player_1 = $player_1
-    # @player_2 = $player_2
     @game = $game
     erb :play
   end
 
   get '/attack' do
-  @game = $game
-  @game.attack(@game.player_2)
-  @game.switch_turns
-  erb :attack
-end
+    @game = $game
+    @game.attack(@game.opponent_of(@game.current_turn))
+    # p @game.current_turn
+    # @game.switch_turns
+    # p @game.current_turn
+    erb :attack
+  end
 
-#   get '/attack' do
-#     @player_1 = $player_1
-#     @player_2 = $player_2
-# -   @player_1.attack(@player_2)
-# +   Game.new.attack(@player_2)
-#     erb :attack
-# end
+  post '/switch-turns' do
+    $game.switch_turns
+    redirect('/play')
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

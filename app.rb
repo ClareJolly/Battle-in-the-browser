@@ -29,11 +29,11 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    @game = $game
-+    @game.attack(@game.player_2)
-    # Game.new.attack(@player_2)
-    erb :attack
-  end
+  @game = $game
+  @game.attack(@game.player_2)
+  @game.switch_turns
+  erb :attack
+end
 
 #   get '/attack' do
 #     @player_1 = $player_1
